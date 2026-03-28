@@ -1,3 +1,20 @@
 {
-	"challenges": [0, 1, 2, 3, 4]
+	"challenges": [
+		{
+			"path": "example_challenge",
+			"entry": "versions/v1/main.html"
+		},
+		{
+			"path": "starfield_simulation"
+		},
+		{
+			"path": "menger_sponge_fractal"
+		},
+		{
+			"path": "snake_game"
+		},
+		{
+			"path": "rain"
+		}
+	]
 }

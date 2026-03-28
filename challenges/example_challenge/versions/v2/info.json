@@ -1,0 +1,15 @@
+{
+	"title": "Example Challenge",
+	"date": "11/03/2025",
+	"description": "Alternative implementation with smoother orbital motion and trailing fade. (Copilot made this and it's cool so it stays.)",
+	"versions": [
+		{
+			"label": "Version 1",
+			"path": "../v1/main.html"
+		},
+		{
+			"label": "Version 2",
+			"path": "../v2/main.html"
+		}
+	]
+}

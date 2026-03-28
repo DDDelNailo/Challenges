@@ -1,0 +1,15 @@
+{
+	"title": "Example Challenge",
+	"date": "11/03/2025",
+	"description": "A starter sketch used to verify rendering, drawing loops, and interaction basics in p5.js.",
+	"versions": [
+		{
+			"label": "Version 1",
+			"path": "versions/v1/main.html"
+		},
+		{
+			"label": "Version 2",
+			"path": "versions/v2/main.html"
+		}
+	]
+}

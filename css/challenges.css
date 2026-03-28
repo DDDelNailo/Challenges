@@ -86,6 +86,31 @@ main {
 	color: var(--text-soft);
 }
 
+#challenge-details .version-picker-wrap {
+	margin: 0 0 14px;
+}
+
+#challenge-details .version-picker-wrap label {
+	display: block;
+	font-size: 0.76rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #bfb0f7;
+	margin-bottom: 6px;
+}
+
+#challenge-details .version-picker-wrap select {
+	width: 100%;
+	border: 1px solid #4f3a86;
+	background: #22193f;
+	color: #f1ecff;
+	border-radius: 8px;
+	padding: 8px 10px;
+	font-family: "Sora", sans-serif;
+	font-size: 0.86rem;
+}
+
 #challenge-details .actions {
 	display: flex;
 	flex-wrap: wrap;
