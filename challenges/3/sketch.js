@@ -105,7 +105,8 @@ class Snake {
 }
 
 function setup() {
-	createCanvas(600, 600);
+	const canvas = createCanvas(600, 600);
+	canvas.parent("canvas-container");
 	frameRate(10);
 	boxSize = width / gridSize;
 
@@ -231,7 +232,9 @@ function draw() {
 	let last = null;
 	let i = 1;
 	let c = 0;
-	for (block of snake.body) {
+	for (const block of snake.body) {
+		let offset = 0;
+		let size = 0;
 		if (block.toString() == last) {
 			offset = 0;
 			size = boxSize;

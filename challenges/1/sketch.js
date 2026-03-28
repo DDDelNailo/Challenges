@@ -1,8 +1,11 @@
 let objects = [];
 let speed = 0;
+let hwidth = 0;
+let hheight = 0;
 
 function setup() {
-	createCanvas(600, 600);
+	const canvas = createCanvas(600, 600);
+	canvas.parent("canvas-container");
 
 	hwidth = width / 2;
 	hheight = height / 2;

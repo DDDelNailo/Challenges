@@ -33,7 +33,9 @@ header h1 a {
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 10px;
 	width: 250px;
+	display: block;
 	text-align: center;
+	text-decoration: none;
 	transition: transform 0.2s;
 	position: relative;
 	overflow: hidden;
@@ -43,6 +45,11 @@ header h1 a {
 .challenge-card:hover {
 	transform: scale(1.05);
 	box-shadow: 0 6px 12px rgba(176, 0, 230, 0.5);
+}
+
+.challenge-card:focus-visible {
+	outline: 3px solid #b000e6;
+	outline-offset: 2px;
 }
 
 .challenge-card img {

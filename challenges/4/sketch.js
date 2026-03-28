@@ -26,7 +26,8 @@ class Drop {
 }
 
 function setup() {
-	createCanvas(650, 650);
+	const canvas = createCanvas(650, 650);
+	canvas.parent("canvas-container");
 
 	for (let i = 0; i < dropsNum; i++) {
 		drops.push(new Drop());
@@ -49,6 +50,7 @@ function draw() {
 	spawnScale = map(abs(mx), 0, 10, 1, 1.8);
 
 	let colIntensity = map(my, 0, maxDrops, 0, 255);
+	let colBlend = colIntensity / 255;
 
 	background(
 		lerp(bgLight[0], bgDark[0], colIntensity / 255),
@@ -70,9 +72,9 @@ function draw() {
 	}
 
 	stroke(
-		lerp(dropLight[0], dropDark[0], 255 / colIntensity),
-		lerp(dropLight[1], dropDark[1], 255 / colIntensity),
-		lerp(dropLight[2], dropDark[2], 255 / colIntensity)
+		lerp(dropLight[0], dropDark[0], colBlend),
+		lerp(dropLight[1], dropDark[1], colBlend),
+		lerp(dropLight[2], dropDark[2], colBlend)
 	);
 	strokeWeight(2);
 	for (let drop of drops) {

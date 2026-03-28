@@ -17,7 +17,8 @@ function setup() {
 	let header = document.querySelector("header");
 	if (header) headerHeight = header.offsetHeight;
 
-	createCanvas(windowWidth, windowHeight - headerHeight, WEBGL);
+	const canvas = createCanvas(windowWidth, windowHeight - headerHeight, WEBGL);
+	canvas.parent("canvas-container");
 	cubes.push(new Cube(V(0, 0, 0), 300));
 
 	noStroke();

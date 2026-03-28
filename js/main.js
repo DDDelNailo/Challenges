@@ -1,14 +1,32 @@
 const container = document.getElementById("challenges");
 
+async function getChallengeList() {
+	const response = await fetch("challenges/manifest.json");
+
+	if (!response.ok) {
+		throw new Error(`Failed to load manifest: ${response.status}`);
+	}
+
+	const data = await response.json();
+	if (!Array.isArray(data.challenges)) {
+		throw new Error("Invalid manifest format: challenges must be an array");
+	}
+
+	return data.challenges;
+}
+
 async function loadChallenge(num) {
 	try {
 		const response = await fetch(`challenges/${num}/info.json`);
+		if (!response.ok) {
+			throw new Error(`Failed to load challenge ${num}: ${response.status}`);
+		}
 		const data = await response.json();
 
-		const card = document.createElement("div");
+		const card = document.createElement("a");
 		card.className = "challenge-card";
-		card.onclick = () =>
-			(window.location.href = `challenges/${num}/main.html`);
+		card.href = `challenges/${num}/main.html`;
+		card.setAttribute("aria-label", `Open challenge: ${data.title}`);
 
 		card.innerHTML = `
               <img src="challenges/${num}/preview.png" alt="${data.title}" />
@@ -24,7 +42,7 @@ async function loadChallenge(num) {
 
 async function loadChallenges() {
 	try {
-		const challengeList = [0, 1, 2, 3, 4];
+		const challengeList = await getChallengeList();
 
 		for (let num of challengeList) {
 			await loadChallenge(num);
