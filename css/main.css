@@ -1,116 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+	--bg-0: #0e1324;
+	--bg-1: #171e38;
+	--surface: #201436;
+	--surface-soft: #231d45;
+	--accent: #8a63ff;
+	--accent-2: #60172e;
+	--text-main: #f1f2ff;
+	--text-soft: #aaafd1;
+	--line: #322f58;
+	--card-shadow: 0 10px 28px rgba(6, 8, 20, 0.45);
+}
+
 * {
+	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 }
 
 body {
-	font-family: Arial, sans-serif;
-	background-color: #1f1e33;
-	color: #f0f8ff;
+	font-family: "Sora", sans-serif;
+	background: linear-gradient(180deg, var(--bg-0), var(--bg-1));
+	color: var(--text-main);
+	min-height: 100vh;
 	text-align: center;
 }
 
-header {
-	background-color: #b000e6;
-	padding: 20px;
+main {
+	width: min(1120px, 92vw);
+	margin: 0 auto;
+	padding: 34px 0 48px;
 }
 
-header h1 a {
-	color: #f0f8ff;
+.page-intro {
+	width: 100%;
+	margin: 0 0 28px;
+	padding: 24px;
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	background: linear-gradient(
+		180deg,
+		rgba(138, 99, 255, 0.08),
+		rgba(96, 23, 46, 0.18)
+	);
+	text-align: left;
+	box-shadow: var(--card-shadow);
+}
+
+.page-intro .eyebrow {
+	font-size: 0.74rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-weight: 700;
+	color: #c4b7ff;
+	margin-bottom: 8px;
+}
+
+.page-intro h1 {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: clamp(1.5rem, 4vw, 2.4rem);
+	margin-bottom: 8px;
+}
+
+.page-intro p {
+	color: var(--text-soft);
+	font-size: 0.95rem;
+	line-height: 1.55;
+}
+
+.playlist-link {
+	display: inline-block;
+	margin-top: 14px;
+	padding: 8px 12px;
+	border-radius: 9px;
+	border: 1px solid #56318b;
+	background: #241846;
+	color: #d4c7ff;
+	text-decoration: none;
+	font-size: 0.85rem;
+	font-weight: 600;
 }
 
 #challenges {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	flex-wrap: wrap;
-	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 22px;
+	align-items: stretch;
 }
 
 .challenge-card {
-	background: #f0f8ff;
-	border-radius: 10px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	padding: 10px;
-	width: 250px;
-	display: block;
-	text-align: center;
+	background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	box-shadow: var(--card-shadow);
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-align: left;
 	text-decoration: none;
-	transition: transform 0.2s;
 	position: relative;
 	overflow: hidden;
-	color: #1f1e33;
+	color: var(--text-main);
+	opacity: 0;
+	transform: translateY(16px);
+	transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.challenge-card::after {
+	content: "";
+	position: absolute;
+	inset: auto 0 0 0;
+	height: 2px;
+	background: linear-gradient(90deg, #3f2d75, #6c2340);
+	pointer-events: none;
+}
+
+.challenge-card.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .challenge-card:hover {
-	transform: scale(1.05);
-	box-shadow: 0 6px 12px rgba(176, 0, 230, 0.5);
+	transform: translateY(-3px);
+	box-shadow: 0 14px 28px rgba(6, 8, 20, 0.55);
 }
 
 .challenge-card:focus-visible {
-	outline: 3px solid #b000e6;
+	outline: 3px solid var(--accent);
 	outline-offset: 2px;
 }
 
 .challenge-card img {
 	width: 100%;
-	height: 150px;
+	height: 170px;
 	object-fit: cover;
-	border-radius: 5px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #3a3661;
 }
 
 .challenge-card h2 {
-	margin: 5px 0 20px 0;
-	font-size: 1.2em;
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.2rem;
+	margin-bottom: 8px;
 }
 
-.challenge-card p {
-	color: #1f1e33;
-	font-size: 0.8em;
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+.challenge-card .summary {
+	font-size: 0.93rem;
+	line-height: 1.45;
+	color: var(--text-soft);
+	margin-bottom: 22px;
+}
+
+.challenge-card .date {
+	display: inline-flex;
+	align-items: center;
+	margin-top: auto;
+	align-self: flex-start;
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: #cdb7ff;
+	background: #2a214f;
+	border: 1px solid #4f3a86;
+	padding: 6px 10px;
+	border-radius: 999px;
 }
 
 .modal {
 	display: none;
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
+	inset: 0;
+	background: rgba(8, 12, 24, 0.78);
 	justify-content: center;
 	align-items: center;
+	z-index: 10;
+	padding: 20px;
 }
 
 .modal-content {
-	background: #1f1e33;
-	padding: 20px;
-	border-radius: 10px;
+	background: #191e38;
+	padding: 22px;
+	border-radius: 14px;
 	text-align: center;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-	max-width: 80%;
+	box-shadow: 0 10px 24px rgba(5, 8, 20, 0.65);
+	max-width: 420px;
+	border: 1px solid #35325a;
 }
 
 .modal-content p {
-	font-size: 16px;
-	color: #f0f8ff;
+	font-size: 0.97rem;
+	line-height: 1.5;
+	color: var(--text-main);
 	margin-bottom: 15px;
 }
 
 button {
-	background-color: #b000e6;
-	color: #f0f8ff;
+	background: #6f4de3;
+	color: #f4f1ff;
 	border: none;
-	padding: 10px 20px;
-	font-size: 16px;
-	border-radius: 5px;
+	padding: 10px 22px;
+	font-size: 0.92rem;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	border-radius: 999px;
 	cursor: pointer;
-	transition: background 0.2s;
+	transition: transform 0.2s ease, background 0.2s ease;
 }
 
 button:hover {
-	background-color: #710093;
+	background: #7f5cf4;
+	transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+	main {
+		width: min(95vw, 500px);
+	}
+
+	.challenge-card img {
+		height: 150px;
+	}
 }

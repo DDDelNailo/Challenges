@@ -1,4 +1,5 @@
 {
 	"title": "Menger Sponge Fractal",
-	"date": "12/03/2025"
+	"date": "12/03/2025",
+	"description": "An interactive 3D fractal that recursively subdivides cubes to form a rotating Menger sponge structure."
 }

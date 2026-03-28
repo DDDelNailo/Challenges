@@ -1,45 +1,121 @@
-html {
-	overflow: hidden;
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+	--bg-0: #0e1324;
+	--bg-1: #171e38;
+	--surface: #201436;
+	--surface-soft: #231d45;
+	--text-main: #f5f7ff;
+	--text-soft: #aaafd1;
+	--accent: #8a63ff;
+	--line: #322f58;
+	--panel-bg: linear-gradient(180deg, var(--surface), var(--surface-soft));
+}
+
+* {
+	box-sizing: border-box;
 }
 
 body {
-	font-family: Arial, sans-serif;
+	font-family: "Sora", sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #1f1e33;
-	color: #f0f8ff;
+	background: linear-gradient(180deg, var(--bg-0), var(--bg-1));
+	color: var(--text-main);
 	text-align: center;
-	overflow: hidden;
+	min-height: 100vh;
 }
 
-header {
-	background-color: #b000e6;
-	padding: 10px;
-}
-
-header h1 {
-	margin: 0;
-	font-size: 1.5em;
-}
-
-header h1 a {
-	color: #f0f8ff;
-}
-
-.home-link {
-	display: block;
-	margin-top: 5px;
-	color: #f0f8ff;
-	text-decoration: none;
-	font-size: 0.9em;
-}
-
-.home-link:hover {
-	text-decoration: underline;
+main {
+	width: min(1160px, 93vw);
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 320px;
+	gap: 16px;
+	align-items: start;
+	padding: 22px 0 24px;
 }
 
 #canvas-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 10px;
+	background: var(--panel-bg);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	box-shadow: 0 10px 24px rgba(7, 9, 25, 0.5);
+	min-height: 420px;
+}
+
+#canvas-container canvas {
+	max-width: 100%;
+	height: auto !important;
+	border-radius: 10px;
+	border: 1px solid #3a3661;
+	box-shadow: 0 10px 20px rgba(7, 9, 25, 0.55);
+}
+
+#challenge-details {
+	text-align: left;
+	padding: 18px;
+	background: var(--panel-bg);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	box-shadow: 0 10px 24px rgba(7, 9, 25, 0.5);
+}
+
+#challenge-details h2 {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.28rem;
+	margin: 0 0 8px;
+}
+
+#challenge-details .meta {
+	font-size: 0.84rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: #d2c1ff;
+	margin: 0 0 12px;
+}
+
+#challenge-details p {
+	margin: 0;
+	line-height: 1.55;
+	font-size: 0.95rem;
+	color: var(--text-soft);
+}
+
+#challenge-details .actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 14px;
+}
+
+#challenge-details .action-link {
+	display: inline-block;
+	padding: 7px 10px;
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-decoration: none;
+	border-radius: 8px;
+	color: #e5dcff;
+	background: #2a214f;
+	border: 1px solid #4f3a86;
+}
+
+#challenge-details .action-link:hover {
+	background: #342863;
+}
+
+@media (max-width: 940px) {
+	main {
+		grid-template-columns: 1fr;
+	}
+
+	#canvas-container {
+		min-height: 300px;
+	}
 }

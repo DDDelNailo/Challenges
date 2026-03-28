@@ -27,14 +27,23 @@ async function loadChallenge(num) {
 		card.className = "challenge-card";
 		card.href = `challenges/${num}/main.html`;
 		card.setAttribute("aria-label", `Open challenge: ${data.title}`);
+		card.style.transitionDelay = `${container.children.length * 60}ms`;
+
+		const summary =
+			data.description ||
+			"Open this challenge to explore the interactive p5.js sketch.";
 
 		card.innerHTML = `
               <img src="challenges/${num}/preview.png" alt="${data.title}" />
               <h2>${data.title}</h2>
+              <p class="summary">${summary}</p>
               <p class="date">${data.date}</p>
             `;
 
 		container.appendChild(card);
+		requestAnimationFrame(() => {
+			card.classList.add("visible");
+		});
 	} catch (error) {
 		console.error(`Error loading challenge ${num}:`, error);
 	}

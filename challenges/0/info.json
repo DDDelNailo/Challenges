@@ -1,4 +1,5 @@
 {
 	"title": "Example Challenge",
-	"date": "11/03/2025"
+	"date": "11/03/2025",
+	"description": "A starter sketch used to verify rendering, drawing loops, and interaction basics in p5.js."
 }

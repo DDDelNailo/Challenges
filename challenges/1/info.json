@@ -1,4 +1,5 @@
 {
 	"title": "Starfield Simulation",
-	"date": "11/03/2025"
+	"date": "11/03/2025",
+	"description": "A depth-driven starfield where mouse input controls velocity and creates different motion moods through particle expansion."
 }
