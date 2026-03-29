@@ -62,3 +62,60 @@ Each version page reads its local `info.json`. Use relative version paths for th
 	]
 }
 ```
+
+## Challenge CLI Utility
+
+Use the CLI to quickly scaffold new challenges and add versions:
+
+### Create a New Challenge
+
+```bash
+node scripts/challenge-cli.mjs new <name> [title] [description]
+```
+
+Example:
+
+```bash
+node scripts/challenge-cli.mjs new my_particle_system "Particle System" "Interactive particles with physics"
+```
+
+This creates:
+
+- Challenge folder structure
+- `info.json`, `main.html`, `sketch.js`, and `preview.png` (placeholder)
+- Entry in `challenges/manifest.json`
+
+### Add a Version to a Challenge
+
+```bash
+node scripts/challenge-cli.mjs add-version <challenge> [version-label]
+```
+
+Examples:
+
+```bash
+node scripts/challenge-cli.mjs add-version my_particle_system "Gravity variation"
+node scripts/challenge-cli.mjs add-version my_particle_system
+```
+
+This:
+
+- Converts single-version challenges to multi-version (moves existing files to `versions/v1/`)
+- Creates a new version folder (`versions/vX/`)
+- Adds version entry to root `info.json`, enabling the version dropdown
+- Generates boilerplate HTML, sketch.js, and info.json files
+
+### Delete a Challenge
+
+```bash
+node scripts/challenge-cli.mjs delete <challenge>
+```
+
+Example:
+
+```bash
+node scripts/challenge-cli.mjs delete my_particle_system
+```
+
+This removes the challenge folder and its entry from `challenges/manifest.json`.
+```
