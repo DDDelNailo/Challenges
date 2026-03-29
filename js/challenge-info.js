@@ -79,7 +79,7 @@ async function loadChallengeInfo() {
                 const resolvedVersionPath = new URL(version.path, versionsBaseHref).pathname;
                 const selected = resolvedVersionPath === currentPath ? " selected" : "";
                 const label = version.label || version.path;
-                return `<option value="${resolvedVersionPath}"${selected}>${label}</option>`;
+                return `<option value="${version.path}"${selected}>${label}</option>`;
             })
             .join("");
 
@@ -111,9 +111,10 @@ async function loadChallengeInfo() {
         const versionPicker = document.getElementById("version-picker");
         if (versionPicker) {
             versionPicker.addEventListener("change", (event) => {
-                const nextPath = event.target.value;
-                if (nextPath) {
-                    window.location.href = nextPath;
+                const relativePath = event.target.value;
+                if (relativePath) {
+                    const targetUrl = new URL(relativePath, window.location.href);
+                    window.location.href = targetUrl.href;
                 }
             });
         }
