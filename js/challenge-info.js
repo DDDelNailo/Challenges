@@ -4,6 +4,27 @@ async function loadChallengeInfo() {
         return;
     }
 
+    const fetchJson = async (path) => {
+        const response = await fetch(path);
+        if (!response.ok) {
+            throw new Error(`Unable to load ${path}: ${response.status}`);
+        }
+
+        return response.json();
+    };
+
+    const getSharedInfoPath = () => {
+        const segments = window.location.pathname.split("/").filter(Boolean);
+        const versionsIndex = segments.indexOf("versions");
+
+        if (versionsIndex === -1) {
+            return null;
+        }
+
+        const levelsToChallengeRoot = segments.length - versionsIndex - 1;
+        return `${"../".repeat(Math.max(0, levelsToChallengeRoot))}info.json`;
+    };
+
     const getHomePath = () => {
         const segments = window.location.pathname.split("/").filter(Boolean);
         const challengesIndex = segments.indexOf("challenges");
@@ -20,12 +41,19 @@ async function loadChallengeInfo() {
     const homePath = getHomePath();
 
     try {
-        const response = await fetch("info.json");
-        if (!response.ok) {
-            throw new Error(`Unable to load challenge info: ${response.status}`);
+        const localInfo = await fetchJson("info.json");
+        const sharedInfoPath = getSharedInfoPath();
+
+        let sharedInfo = null;
+        if (sharedInfoPath) {
+            try {
+                sharedInfo = await fetchJson(sharedInfoPath);
+            } catch (sharedInfoError) {
+                console.warn(sharedInfoError);
+            }
         }
 
-        const info = await response.json();
+        const info = localInfo;
         const title = info.title || "Challenge";
         const date = info.date || "Unknown date";
         const description =
@@ -33,15 +61,25 @@ async function loadChallengeInfo() {
             "This challenge explores creative coding concepts using p5.js.";
         const videoUrl = info.videoUrl;
 
-        const versions = Array.isArray(info.versions) ? info.versions : [];
+        const versionsSource =
+            Array.isArray(sharedInfo?.versions) && sharedInfo.versions.length > 0
+                ? sharedInfo.versions
+                : Array.isArray(localInfo.versions)
+                    ? localInfo.versions
+                    : [];
+
+        const versionsBaseHref = sharedInfoPath
+            ? new URL(sharedInfoPath, window.location.href).href
+            : window.location.href;
+
         const currentPath = window.location.pathname;
-        const versionOptions = versions
+        const versionOptions = versionsSource
             .filter((version) => version && version.path)
             .map((version) => {
-                const resolvedVersionPath = new URL(version.path, window.location.href).pathname;
+                const resolvedVersionPath = new URL(version.path, versionsBaseHref).pathname;
                 const selected = resolvedVersionPath === currentPath ? " selected" : "";
                 const label = version.label || version.path;
-                return `<option value="${version.path}"${selected}>${label}</option>`;
+                return `<option value="${resolvedVersionPath}"${selected}>${label}</option>`;
             })
             .join("");
 

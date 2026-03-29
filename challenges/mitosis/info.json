@@ -11,6 +11,10 @@
 		{
 			"label": "Coding train's version",
 			"path": "versions/v2/main.html"
+		},
+		{
+			"label": "Autonomous ecosystem",
+			"path": "versions/v3/main.html"
 		}
 	]
 }
