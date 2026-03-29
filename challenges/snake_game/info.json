@@ -1,6 +1,6 @@
 {
 	"title": "Snake Game",
 	"date": "13/03/2025",
-	"description": "A classic grid-based snake game with score tracking, high-score persistence, and wrap-around movement.",
+	"description": "(#3) A classic grid-based snake game with score tracking, high-score persistence, and wrap-around movement.",
 	"videoUrl": "https://youtu.be/AaGK-fj-BAM?si=55ew7r_sk5Z4srds"
 }
