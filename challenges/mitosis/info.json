@@ -1,0 +1,16 @@
+{
+	"title": "Mitosis",
+	"date": "29/03/2026",
+	"description": "(#6) A simulation of cell division.",
+	"videoUrl": "https://youtu.be/jxGS3fKPKJA?si=v-VINDW0ov3hUkf_",
+	"versions": [
+		{
+			"label": "My version",
+			"path": "versions/v1/main.html"
+		},
+		{
+			"label": "Coding train's version",
+			"path": "versions/v2/main.html"
+		}
+	]
+}

@@ -15,6 +15,10 @@
 		},
 		{
 			"path": "rain"
+		},
+		{
+			"path": "mitosis",
+			"entry": "versions/v1/main.html"
 		}
 	]
 }
