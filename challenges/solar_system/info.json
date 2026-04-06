@@ -1,0 +1,12 @@
+{
+	"title": "Solar System",
+	"date": "06/04/2026",
+	"description": "(#7) Simulation of celestial bodies.",
+	"videoUrl": "https://youtu.be/jxGS3fKPKJA?si=v-VINDW0ov3hUkf_",
+	"versions": [
+		{
+			"label": "Version 1",
+			"path": "../v1/main.html"
+		}
+	]
+}
