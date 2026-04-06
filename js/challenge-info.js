@@ -68,9 +68,7 @@ async function loadChallengeInfo() {
                     ? localInfo.versions
                     : [];
 
-        const versionsBaseHref = sharedInfoPath
-            ? new URL(sharedInfoPath, window.location.href).href
-            : window.location.href;
+        const versionsBaseHref = window.location.href;
 
         const currentPath = window.location.pathname;
         const versionOptions = versionsSource
@@ -113,7 +111,7 @@ async function loadChallengeInfo() {
             versionPicker.addEventListener("change", (event) => {
                 const relativePath = event.target.value;
                 if (relativePath) {
-                    const targetUrl = new URL(relativePath, window.location.href);
+                    const targetUrl = new URL(relativePath, versionsBaseHref);
                     window.location.href = targetUrl.href;
                 }
             });

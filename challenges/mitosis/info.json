@@ -6,15 +6,15 @@
 	"versions": [
 		{
 			"label": "My version",
-			"path": "versions/v1/main.html"
+			"path": "../v1/main.html"
 		},
 		{
 			"label": "Coding train's version",
-			"path": "versions/v2/main.html"
+			"path": "../v2/main.html"
 		},
 		{
 			"label": "Autonomous ecosystem",
-			"path": "versions/v3/main.html"
+			"path": "../v3/main.html"
 		}
 	]
 }
