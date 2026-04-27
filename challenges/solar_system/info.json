@@ -7,6 +7,14 @@
 		{
 			"label": "Version 1",
 			"path": "../v1/main.html"
+		},
+		{
+			"label": "Version 2",
+			"path": "../v2/main.html"
+		},
+		{
+			"label": "Version 3",
+			"path": "../v3/main.html"
 		}
 	]
 }

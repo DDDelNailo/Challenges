@@ -1,5 +1,5 @@
 {
 	"title": "Solar System",
 	"date": "06/04/2026",
-	"description": "Simulation of celestial bodies."
+	"description": "Simple gravity calculation for a planet and a moon."
 }
